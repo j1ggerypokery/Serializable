@@ -40,7 +40,17 @@ public class Main {
         GameProgress gameProgress = new GameProgress(94, 10, 2, 230);
         saveGame("Users/Oleg/Desktop/Games/savegames/save.dat", gameProgress);
         zipFiles("Users/Oleg/Desktop/Games/savegames/zip-output.zip", "Users/Oleg/Desktop/Games/savegames/save.dat");
+
+        GameProgress gameProgress1 = new GameProgress(90, 20, 4, 500);
+        saveGame("Users/Oleg/Desktop/Games/savegames/save.dat", gameProgress);
+        zipFiles("Users/Oleg/Desktop/Games/savegames/zip-output.zip", "Users/Oleg/Desktop/Games/savegames/save.dat");
+
+        GameProgress gameProgress2 = new GameProgress(50, 15, 5, 600);
+        saveGame("Users/Oleg/Desktop/Games/savegames/save.dat", gameProgress);
+        zipFiles("Users/Oleg/Desktop/Games/savegames/zip-output.zip", "Users/Oleg/Desktop/Games/savegames/save.dat");
+
     }
+
 
     public static void createDirectory(String directories) {
         File dir = new File(directories);
@@ -72,7 +82,7 @@ public class Main {
         }
     }
 
-    public static void zipFiles(String path, String objects) {
+    public static void zipFiles(String path, String object) {
         try (ZipOutputStream zout = new ZipOutputStream(new
                 FileOutputStream("zip_output.zip"));
              FileInputStream fis = new FileInputStream("save.dat")) {
@@ -92,7 +102,7 @@ public class Main {
 
 
         public static void saveGame (String path, Object gameProgress) {
-
+        createFile(path,"Game Progress");
             try (FileOutputStream fos = new FileOutputStream("save.dat");
 // перевод строки в массив байтов
                  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
